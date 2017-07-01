@@ -1,6 +1,6 @@
-### Hello World Node JS Express Server
+#### Hello World Node JS Express Server
 
-#Simple project to create hello world server
+Simple project to create hello world server
 
 1. Clone Repo
 2. Run `npm install`
