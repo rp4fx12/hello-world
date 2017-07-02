@@ -1,8 +1,9 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const functions = require('./basic-functions');
 
 app.get('/', function (req, res) {
-  res.send('Haha')
+  res.send(functions.helloName('Rohan'));
 })
 
 app.listen(3000, function () {
