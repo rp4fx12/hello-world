@@ -16,6 +16,8 @@ deployment:
   production:
     branch: master
     commands:
+      - ls -a
       - cd basic-ec2
+      - ls -a
       - ../terraform plan
       - ../terraform apply
