@@ -19,6 +19,5 @@ deployment:
       - ./terraform plan
       - ./terraform apply
   post:
-    - export INSTANCE=`./terraform show | grep "id = i-" | awk '{print $3}'`
-    - touch $INSTANCE
-    - aws s3 cp $INSTANCE s3://hello-world-rohan/current/$INSTANCE
+    - echo `./terraform show | grep "id = i-" | awk '{print $3}'` > instance.txt
+    - aws s3 cp instance.txt s3://hello-world-rohan/current/instance.txt
