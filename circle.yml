@@ -19,7 +19,7 @@ deployment:
       - ./terraform plan
       - ./terraform apply
   post:
-    - INSTANCE=`terraform show | grep "id = i-" | awk '{print $3}'`
+    - INSTANCE=`./terraform show | grep "id = i-" | awk '{print $3}'`
     - echo $INSTANCE
-    - touch `terraform show | grep "id = i-" | awk '{print $3}'`
-    - aws s3 cp  `terraform show | grep "id = i-" | awk '{print $3}'` s3://hello-world-rohan/test
+    - touch `./terraform show | grep "id = i-" | awk '{print $3}'`
+    - aws s3 cp  `./terraform show | grep "id = i-" | awk '{print $3}'` s3://hello-world-rohan/test
