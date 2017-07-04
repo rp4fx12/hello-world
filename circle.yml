@@ -6,7 +6,7 @@ dependencies:
   pre:
     - wget https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip
     - unzip terraform_0.9.11_linux_amd64.zip
-    - git submodule add https://github.com/rp4fx12/basic-ec2
+    - curl -L https://raw.githubusercontent.com/rp4fx12/basic-ec2/master/main.tf -o main.tf
 
 test:
   override:
@@ -16,8 +16,10 @@ deployment:
   production:
     branch: master
     commands:
-      - ls -a
-      - cd basic-ec2
-      - ls -a
-      - ../terraform plan
-      - ../terraform apply
+      - ./terraform plan
+      - ./terraform apply
+  post:
+    - INSTANCE=`terraform show | grep "id = i-" | awk '{print $3}'`
+    - echo $INSTANCE
+    - touch `terraform show | grep "id = i-" | awk '{print $3}'`
+    - aws s3 cp  `terraform show | grep "id = i-" | awk '{print $3}'` s3://hello-world-rohan/test
