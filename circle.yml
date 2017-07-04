@@ -1,0 +1,20 @@
+machine:
+  node:
+    version: 7.10.0
+
+dependencies:
+  pre:
+    - wget https://dl.bintray.com/mitchellh/terraform/terraform_0.6.3_linux_amd64.zip
+    - unzip terraform_0.6.3_linux_amd64.zip
+    - curl -L https://raw.githubusercontent.com/rp4fx12/basic-ec2/master/main.tf -o main.tf
+
+test:
+  override:
+    - npm test
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./terraform plan
+      - ./terraform apply
