@@ -6,7 +6,7 @@ dependencies:
   pre:
     - wget https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip
     - unzip terraform_0.9.11_linux_amd64.zip
-    - curl -L https://raw.githubusercontent.com/rp4fx12/basic-ec2/master/main.tf -o main.tf
+    - git submodule add https://github.com/rp4fx12/basic-ec2
 
 test:
   override:
@@ -16,5 +16,6 @@ deployment:
   production:
     branch: master
     commands:
-      - ./terraform plan
-      - ./terraform apply
+      - cd basic-ec2
+      - ../terraform plan
+      - ../terraform apply
