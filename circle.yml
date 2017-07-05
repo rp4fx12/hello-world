@@ -13,13 +13,7 @@ test:
 
 deployment:
   production:
-    branch: master
+    branch: alex-messing-around
     commands:
       - ./terraform plan
       - ./terraform apply
-  post:
-    - echo `./terraform show | grep "id = i-" | awk '{print $3}'` > instance.txt
-    - aws s3 cp instance.txt s3://hello-world-rohan/new/instance.txt
-    - ls -a
-    - chmod 755 post-run.sh
-    - bash post-run.sh
