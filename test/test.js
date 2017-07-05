@@ -3,9 +3,9 @@ const functions = require('../basic-functions');
 
 describe('Test Hello Name function', function() {
   it('returns Hello Test', function() {
-    expect('Hello Test', functions.helloName('Test'));
+    expect('Hello Test').to.equal(functions.helloName('Test'));
   });
   it('returns Hello ', function() {
-    expect('Hello ', functions.helloName(null));
+    expect('Hello null').to.equal(functions.helloName(null));
   })
 });

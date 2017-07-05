@@ -1,5 +1,6 @@
 #!bin/bash
 sleep 4m
+# This is where you run your test
 aws s3 cp s3://hello-world-rohan/current/instance.txt current.txt
 aws s3 rm s3://hello-world-rohan/current/instance.txt
 export CURRENT=`cat current.txt`
