@@ -20,4 +20,4 @@ deployment:
   post:
     - echo `./terraform show | grep "id = i-" | awk '{print $3}'` > instance.txt
     - aws s3 cp instance.txt s3://hello-world-rohan/new/instance.txt
-    - ./postrun.sh
+    - ./post-run.sh
