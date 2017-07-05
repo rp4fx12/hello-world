@@ -9,3 +9,5 @@ Simple project to create hello world server
 
 Testing
 1. run `npm test`
+
+run
